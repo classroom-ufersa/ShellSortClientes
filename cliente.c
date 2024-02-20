@@ -51,9 +51,26 @@ void imprimirClientes(Cliente *clientes, int numClientes) {
 
     }
 }
-/*
-Função desnecessária, já que a função shellsort é uma função de ordenação.
-void ordenarClientes(Cliente *clientes, int numClientes) {
-    shellSort(clientes, numClientes);
+
+void Dados_Clientes(Cliente * cliente){
+printf("Insira seu nome: ");
+scanf(" %[^\n]", estudante->nome);
+printf("Informe seu endereço: ");
+scanf(" %[^\n]", cliente->endereço);
+    
 }
-*/
+
+void Menu(Cliente * cliente){
+printf("-------- SISTEMA SHELL SORT --------");
+printf("Oque deseja fazer:");
+printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
+if(){
+    
+    }
+}
+
+
+
+
+
+
