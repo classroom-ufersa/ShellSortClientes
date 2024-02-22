@@ -61,14 +61,12 @@ printf("Informe o seu ID: ");
 scanf("%d", &cliente->ID);
     
 }
-
 void Menu(Cliente * cliente){
 printf("-------- SISTEMA SHELL SORT --------");
 printf("Oque deseja fazer:");
 printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
-if(){
-    
-    }
+scanf("%d", &opl);
+
 }
 
 
