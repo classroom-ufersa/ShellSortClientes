@@ -1,5 +1,14 @@
 #include "../tad/cliente.h"
 
+int opc;
+
+// Struct que armazenara os dados dos clientes cadastrados
+typedef struct clientes{
+    char nome[50];
+    char endereco[100];
+    int ID;
+};
+
 Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
     FILE *arquivo = fopen(nomeArquivo, "r");
     if (arquivo == NULL) {
@@ -24,7 +33,7 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
 
     // Ler os clientes do arquivo e armazenar no array
     for (int i = 0; i < contador; i++) {
-        fscanf(arquivo, "%d %[^\n]", &clientes[i].id, clientes[i].nome);
+        fscanf(arquivo, "%d %[^\n]", &clientes->ID, clientes->nome, clientes->endereco);
     }
 
     fclose(arquivo);
@@ -37,7 +46,7 @@ void shellSort(Cliente arr[], int n) {
         for (int i = intervalo; i < n; i += 1) {
             Cliente temp = arr[i];
             int j;
-            for (j = i; j >= intervalo && arr[j - intervalo].id > temp.id; j -= intervalo) {
+            for (j = i; j >= intervalo && arr[j - intervalo].ID > temp.ID; j -= intervalo) {
                 arr[j] = arr[j - intervalo];
             }
             arr[j] = temp;
@@ -47,34 +56,27 @@ void shellSort(Cliente arr[], int n) {
 
 void imprimirClientes(Cliente *clientes, int numClientes) {
     for (int i = 0; i < numClientes; i++) {
-        printf("ID: %d, Nome: %s\n", clientes[i].id, clientes[i].nome);
+        printf("ID: %d, Nome: %s\n, Endereco: %s\n", clientes->ID, clientes->nome, clientes->endereco);
 
     }
 }
 
-void Dados_Clientes(Cliente * cliente){
+void Dados_Clientes(Cliente * clientes){
 printf("Insira seu nome: ");
-scanf(" %[^\n]", cliente->nome);
+scanf(" %[^\n]", clientes->nome);
 printf("Informe seu endereço: ");
-scanf(" %[^\n]", cliente->endereco);
+scanf(" %[^\n]", clientes->endereco);
 printf("Informe o seu ID: ");
-scanf("%d", &cliente->ID);
+scanf("%d", &clientes->ID);
     
 }
-void Menu(Cliente * cliente){
+
+void Menu(Cliente * clientes){
 printf("-------- SISTEMA SHELL SORT --------");
 printf("Oque deseja fazer:");
 printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
-scanf("%d", &opl);
+scanf("%d", &opc);
 
 }
 
-//teste
-//teste2
-//teste3
-
-
-
-
-
-
+// teste
