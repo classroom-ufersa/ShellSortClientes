@@ -1,11 +1,8 @@
-#ifndef CLIENTE_H
-#define CLIENTE_H
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
-typedef struct clientes {
-  char nome[50];
-  char endereco[100];
-  int ID;
-} Cliente;
+typedef struct clientes Cliente;
 
 // Função para entrada de dados
 void Menu(Cliente *clientes);
