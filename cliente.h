@@ -2,10 +2,14 @@
 #include<stdlib.h>
 #include<string.h>
 
-typedef struct clientes Cliente;
+typedef struct clientes {
+    char nome[50];
+    char endereco[100];
+    int ID;
+} Cliente;
 
 // Função para entrada de dados
-void Menu(Cliente *clientes);
+void Menu(Cliente *clientes, int *opc);
 
 // Função para ler e armazenar os dados cadastrados em um arquivo de texto.
 Cliente *lerClientes(char *nomeArquivo, int *numClientes);
@@ -15,3 +19,7 @@ void shellSort(Cliente *arr, int n);
 
 // Função que irá imprimir os dados dos clientes na tela.
 void imprimirClientes(Cliente *clientes, int numClientes);
+
+// Função para receber os dados de um novo cliente e armazená-los na estrutura Cliente
+void Dados_Clientes(Cliente *clientes);
+

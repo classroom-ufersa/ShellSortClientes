@@ -1,13 +1,6 @@
 #include "cliente.h"
 
-int opc;
-
-// Struct que armazenara os dados dos clientes cadastrados
-typedef struct clientes{
-    char nome[50];
-    char endereco[100];
-    int ID;
-}Cliente;
+typedef struct clientes Cliente;
 
 Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   FILE *arquivo = fopen(nomeArquivo, "r");
@@ -65,11 +58,11 @@ void imprimirClientes(Cliente *clientes, int numClientes) {
   }
 }
 
-void Menu(Cliente * clientes){
+void Menu(Cliente * clientes,  int *opc){
 printf("-------- SISTEMA SHELL SORT --------");
-printf("Oque deseja fazer:");
-printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
-scanf("%d", &opc);
+printf("O que deseja fazer:\n");
+printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação ");
+scanf("%d", opc);
 
 }
 

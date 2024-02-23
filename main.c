@@ -23,8 +23,32 @@ int main() {
 
   shellSort(clientes, numClientes);
 
-  printf("\nClientes ordenados:\n");
-  imprimirClientes(clientes, numClientes);
+  int opc, continua = 1;
+  while (continua) {
+    // Menu para receber a opção do usuário
+    Menu(clientes, &opc);
+
+    switch (opc) {
+    case 1:
+      // Receber os dados do novo cliente
+      printf("Digite os dados do novo cliente:\n");
+      Dados_Clientes(&clientes[numClientes]);
+      numClientes++;
+      break;
+    case 2:
+      // Ordenar os clientes
+      shellSort(clientes, numClientes);
+
+      // Imprimir clientes após a ordenação
+      printf("\nClientes ordenados:\n");
+      imprimirClientes(clientes, numClientes);
+
+      continua = 0; // Finaliza o loop
+      break;
+    default:
+      printf("Opção inválida!\n");
+    }
+  }
 
   free(clientes);
 
