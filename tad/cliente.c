@@ -1,23 +1,13 @@
-#include "cliente.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "../tad/cliente.h"
 
-void Menu(Cliente * clientes){
-printf("-------- SISTEMA SHELL SORT --------");
-printf("Oque deseja fazer:");
-printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
-scanf("%d", &opc);
+int opc;
 
-}
-void Dados_Clientes(Cliente * clientes){
-printf("Insira seu nome: ");
-scanf(" %[^\n]", clientes->nome);
-printf("Informe seu endereço: ");
-scanf(" %[^\n]", clientes->endereco);
-printf("Informe o seu ID: ");
-scanf("%d", &clientes->ID);
-    
-}
+// Struct que armazenara os dados dos clientes cadastrados
+typedef struct clientes{
+    char nome[50];
+    char endereco[100];
+    int ID;
+};
 
 Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   FILE *arquivo = fopen(nomeArquivo, "r");
@@ -73,4 +63,22 @@ void imprimirClientes(Cliente *clientes, int numClientes) {
     printf("ID: %d, Nome: %s, Endereco: %s\n", clientes[i].ID, clientes[i].nome,
            clientes[i].endereco);
   }
+}
+
+void Menu(Cliente * clientes){
+printf("-------- SISTEMA SHELL SORT --------");
+printf("Oque deseja fazer:");
+printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
+scanf("%d", &opc);
+
+}
+
+void Dados_Clientes(Cliente * clientes){
+printf("Insira seu nome: ");
+scanf(" %[^\n]", clientes->nome);
+printf("Informe seu endereço: ");
+scanf(" %[^\n]", clientes->endereco);
+printf("Informe o seu ID: ");
+scanf("%d", &clientes->ID);
+    
 }
