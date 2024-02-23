@@ -7,6 +7,11 @@ Ordenação de clientes com Shell Sort
 * [Pedro Henrique Filgueira Carlos](https://github.com/PedrohfCarlos)
 * [Rômulo Levy de Castro Oliveira](https://github.com/Romulolevy)
 ##
+### Objetivo
+```
+Implemente um algoritmo que manipula um tipo estruturado Clientes e mantém os clientes ordenados por código em um arquivo.
+```
+##
 ### Tópicos
 ##
 ### Sobre o Shell Sort
