@@ -11,9 +11,7 @@ void Menu(Cliente *clientes);
 Cliente *lerClientes(char *nomeArquivo, int *numClientes);
 
 // Função para ordenar os dados.
-void shellSort(Cliente arr[], int n);
+void shellSort(Cliente *arr, int n);
 
 // Função que irá imprimir os dados dos clientes na tela.
 void imprimirClientes(Cliente *clientes, int numClientes);
-
-#endif

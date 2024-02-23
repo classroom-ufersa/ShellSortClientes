@@ -1,11 +1,10 @@
-#include "./tad/cliente.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "cliente.h"
 
 // código para rodar no shell
-// gcc -c main.c -o main.o
-// gcc -c ./tad/cliente.c -o cliente.o
-// gcc main.o cliente.o -o main
+// gcc -c main.c
+// gcc -c cliente.c
+// gcc -o executavel.exe cliente.o main.o
+// ./executavel.exe
 
 int main() {
   FILE *arquivo = fopen("clientes.txt", "at");

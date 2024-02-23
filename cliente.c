@@ -1,4 +1,4 @@
-#include "../tad/cliente.h"
+#include "cliente.h"
 
 int opc;
 
@@ -7,7 +7,7 @@ typedef struct clientes{
     char nome[50];
     char endereco[100];
     int ID;
-};
+}Cliente;
 
 Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   FILE *arquivo = fopen(nomeArquivo, "r");
@@ -44,7 +44,7 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   return clientes;
 }
 
-void shellSort(Cliente arr[], int n) {
+void shellSort(Cliente *arr, int n) {
   for (int intervalo = n / 2; intervalo > 0; intervalo /= 2) {
     for (int i = intervalo; i < n; i += 1) {
       Cliente temp = arr[i];
