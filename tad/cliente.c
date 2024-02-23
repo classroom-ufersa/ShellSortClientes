@@ -2,6 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void Menu(Cliente * clientes){
+printf("-------- SISTEMA SHELL SORT --------");
+printf("Oque deseja fazer:");
+printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
+scanf("%d", &opc);
+
+}
+void Dados_Clientes(Cliente * clientes){
+printf("Insira seu nome: ");
+scanf(" %[^\n]", clientes->nome);
+printf("Informe seu endereço: ");
+scanf(" %[^\n]", clientes->endereco);
+printf("Informe o seu ID: ");
+scanf("%d", &clientes->ID);
+    
+}
+
 Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   FILE *arquivo = fopen(nomeArquivo, "r");
   if (arquivo == NULL) {
