@@ -3,7 +3,7 @@
 int opc;
 
 // Struct que armazenara os dados dos clientes cadastrados
-typedef struct clientes{
+struct clientes{
     char nome[50];
     char endereco[100];
     int ID;
@@ -34,7 +34,7 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
 
   // Ler os clientes do arquivo e armazenar no array
   for (int i = 0; i < contador; i++) {
-    if (fscanf(arquivo, "%d %49[^\n] %99[^\n]", &clientes[i].ID,
+    if (fscanf(arquivo, "%d %49[^\n] %99[^\n]", &clientes[i].id,
                clientes[i].nome, clientes[i].endereco) != 3) {
     }
   }
@@ -49,7 +49,7 @@ void shellSort(Cliente arr[], int n) {
     for (int i = intervalo; i < n; i += 1) {
       Cliente temp = arr[i];
       int j;
-      for (j = i; j >= intervalo && arr[j - intervalo].ID > temp.ID;
+      for (j = i; j >= intervalo && arr[j - intervalo].id > temp.id;
            j -= intervalo) {
         arr[j] = arr[j - intervalo];
       }
@@ -60,9 +60,23 @@ void shellSort(Cliente arr[], int n) {
 
 void imprimirClientes(Cliente *clientes, int numClientes) {
   for (int i = 0; i < numClientes; i++) {
-    printf("ID: %d, Nome: %s, Endereco: %s\n", clientes[i].ID, clientes[i].nome,
+    printf("ID: %d, Nome: %s, Endereco: %s\n", clientes[i].id, clientes[i].nome,
            clientes[i].endereco);
   }
+}
+
+int verificarDadosCliente(Cliente *cliente) {
+    if (cliente->id <= 0) {
+        printf("ID inválido. Tente novamente.\n");
+        return 0;
+    }
+
+    if (cliente->nome[0] == '\0' || cliente->endereco[0] == '\0') {
+        printf("Nome ou endereço inválido. Tente novamente.\n");
+        return 0;
+    }
+
+    return 1;
 }
 
 void Menu(Cliente * clientes){
@@ -70,6 +84,10 @@ printf("-------- SISTEMA SHELL SORT --------");
 printf("Oque deseja fazer:");
 printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação");
 scanf("%d", &opc);
+if (opc != 1 && opc != 2) {
+        printf("Opção inválida. Saindo do programa.\n");
+        exit(1);
+}
 
 }
 
@@ -79,6 +97,10 @@ scanf(" %[^\n]", clientes->nome);
 printf("Informe seu endereço: ");
 scanf(" %[^\n]", clientes->endereco);
 printf("Informe o seu ID: ");
-scanf("%d", &clientes->ID);
+scanf("%d", &clientes->id);
     
+    if (!verificarDadosCliente(clientes)) {
+        // Se os dados forem inválidos, saia da função
+        return;
+    }
 }

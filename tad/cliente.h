@@ -2,7 +2,11 @@
 #include<stdlib.h>
 #include<string.h>
 
-typedef struct clientes Cliente;
+typedef struct {
+    int id;
+    char nome[50];
+    char endereco[100];
+} Cliente;
 
 // Função para entrada de dados
 void Menu(Cliente *clientes);
@@ -16,4 +20,5 @@ void shellSort(Cliente arr[], int n);
 // Função que irá imprimir os dados dos clientes na tela.
 void imprimirClientes(Cliente *clientes, int numClientes);
 
-#endif
+// Função para verificar se os dados de um cliente são válidos.
+int verificarDadosCliente(Cliente *clientes); 
