@@ -18,7 +18,7 @@ int main() {
   int numClientes;
   Cliente *clientes = lerClientes("clientes.txt", &numClientes);
 
-  int opc, continua = 1
+  int opc, continua = 1;
   while (continua) {
     // Menu para receber a opção do usuário
     Menu(clientes, &opc);
