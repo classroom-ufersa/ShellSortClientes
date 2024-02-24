@@ -18,11 +18,6 @@ int main() {
   int numClientes;
   Cliente *clientes = lerClientes("clientes.txt", &numClientes);
 
-  printf("Clientes antes da ordenação:\n");
-  imprimirClientes(clientes, numClientes);
-
-  shellSort(clientes, numClientes);
-
   int opc, continua = 1;
   while (continua) {
     // Menu para receber a opção do usuário
@@ -36,15 +31,24 @@ int main() {
       numClientes++;
       break;
     case 2:
+      // Imprimir clientes antes da ordenação
+      printf("\nClientes antes da ordenação:\n");
+      imprimirClientes(clientes, numClientes);
+
       // Ordenar os clientes
       shellSort(clientes, numClientes);
 
-      // Imprimir clientes após a ordenação
+      // Imprimir clientes depois da ordenação
       printf("\nClientes ordenados:\n");
       imprimirClientes(clientes, numClientes);
+      printf("\nDigite algo para continuar...\n");
+      char digite;
+      scanf("%*c%s", &digite);
 
-      continua = 0; // Finaliza o loop
       break;
+    case 3:
+      printf("Saindo...\n");
+      return 0;
     default:
       printf("Opção inválida!\n");
     }
