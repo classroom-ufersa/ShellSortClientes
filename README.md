@@ -9,7 +9,8 @@ Ordenação de clientes com Shell Sort
 ##
 ### Objetivo
 ```
-Implemente um algoritmo que manipula um tipo estruturado Clientes e mantém os clientes ordenados por código em um arquivo.
+Implemente um algoritmo que manipula um tipo estruturado
+ Clientes e mantém os clientes ordenados por código em um arquivo.
 ```
 ##
 ### Tópicos
