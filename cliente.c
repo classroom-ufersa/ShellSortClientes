@@ -1,4 +1,5 @@
 #include "cliente.h"
+#include <stdlib.h>
 
 typedef struct clientes Cliente;
 
@@ -19,7 +20,7 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   contador /= 2;
 
   // Aloca memória para o array de clientes
-  Cliente *clientes = (Cliente *)calloc(contador,sizeof(Cliente));
+  Cliente *clientes = (Cliente *)calloc(contador, sizeof(Cliente));
   if (clientes == NULL) {
     printf("Erro ao alocar memória\n");
     exit(1);
@@ -58,20 +59,19 @@ void imprimirClientes(Cliente *clientes, int numClientes) {
   }
 }
 
-void Menu(Cliente * clientes,  int *opc){
-printf("-------- SISTEMA SHELL SORT --------");
-printf("O que deseja fazer:\n");
-printf("(1)-Casdastrar Clientes \n (2)-Mostrar Ordenação ");
-scanf("%d", opc);
-
+void Menu(Cliente *clientes, int *opc) {
+  system("clear");
+  printf("-------- SISTEMA SHELL SORT --------\n");
+  printf("O que deseja fazer:\n");
+  printf("(1) - Cadastrar Clientes \n(2) - Mostrar Ordenação\n(3) - Sair\n");
+  scanf("%d", opc);
 }
 
-void Dados_Clientes(Cliente * clientes){
-printf("Insira seu nome: ");
-scanf(" %[^\n]", clientes->nome);
-printf("Informe seu endereço: ");
-scanf(" %[^\n]", clientes->endereco);
-printf("Informe o seu ID: ");
-scanf("%d", &clientes->ID);
-    
+void Dados_Clientes(Cliente *clientes) {
+  printf("Insira seu nome: ");
+  scanf(" %[^\n]", clientes->nome);
+  printf("Informe seu endereço: ");
+  scanf(" %[^\n]", clientes->endereco);
+  printf("Informe o seu ID: ");
+  scanf("%d", &clientes->ID);
 }
