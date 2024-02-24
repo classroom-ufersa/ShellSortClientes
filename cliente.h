@@ -20,6 +20,6 @@ void shellSort(Cliente *arr, int n);
 // Função que irá imprimir os dados dos clientes na tela.
 void imprimirClientes(Cliente *clientes, int numClientes);
 
-// Função para receber os dados de um novo cliente e armazená-los na estrutura Cliente
-void Dados_Clientes(Cliente *clientes);
+// Função para receber os dados de um novo cliente e armazená-los na estrutura Cliente.
+void Dados_Clientes(Cliente *clientes, int numClientes);
 

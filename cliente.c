@@ -10,7 +10,7 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
     exit(1);
   }
 
-  // Contar o número de clientes no arquivo
+  // Contar o número de clientes no arquivo.
   int contador = 0;
   char linha[150];
   while (fgets(linha, sizeof(linha), arquivo) != NULL) {
@@ -19,14 +19,14 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   rewind(arquivo);
   contador /= 2;
 
-  // Aloca memória para o array de clientes
-  Cliente *clientes = (Cliente *)calloc(contador, sizeof(Cliente));
+  // Aloca memória para o array de clientes.
+  Cliente *clientes = (Cliente *)calloc(contador,sizeof(Cliente));
   if (clientes == NULL) {
     printf("Erro ao alocar memória\n");
     exit(1);
   }
 
-  // Ler os clientes do arquivo e armazenar no array
+  // Ler os clientes do arquivo e armazenar no array.
   for (int i = 0; i < contador; i++) {
     if (fscanf(arquivo, "%d %49[^\n] %99[^\n]", &clientes[i].ID,
                clientes[i].nome, clientes[i].endereco) != 3) {
@@ -67,11 +67,23 @@ void Menu(Cliente *clientes, int *opc) {
   scanf("%d", opc);
 }
 
-void Dados_Clientes(Cliente *clientes) {
+void Dados_Clientes(Cliente *clientes, int numClientes){
   printf("Insira seu nome: ");
-  scanf(" %[^\n]", clientes->nome);
+  scanf(" %[^\n]", clientes[numClientes].nome);
   printf("Informe seu endereço: ");
-  scanf(" %[^\n]", clientes->endereco);
-  printf("Informe o seu ID: ");
-  scanf("%d", &clientes->ID);
+  scanf(" %[^\n]", clientes[numClientes].endereco);
+
+    // Verificar se o há outro ID igual.
+    int novoID;
+    printf("Informe o seu ID: ");
+    scanf("%d", &novoID);
+
+    for (int i = 0; i < numClientes; i++) {
+      if (clientes[i].ID == novoID) {
+        printf("ID já existe. Por favor, insira um novo ID: ");
+        scanf("%d", &novoID);
+        i = -1;
+      }
+    }
+    clientes[numClientes].ID = novoID;
 }

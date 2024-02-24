@@ -20,14 +20,14 @@ int main() {
 
   int opc, continua = 1;
   while (continua) {
-    // Menu para receber a opção do usuário
+    // Menu para receber a opção do usuário.
     Menu(clientes, &opc);
 
     switch (opc) {
     case 1:
-      // Receber os dados do novo cliente
+      // Receber os dados do novo cliente.
       printf("Digite os dados do novo cliente:\n");
-      Dados_Clientes(&clientes[numClientes]);
+      Dados_Clientes(clientes, numClientes);
       numClientes++;
       break;
     case 2:
@@ -35,10 +35,10 @@ int main() {
       printf("\nClientes antes da ordenação:\n");
       imprimirClientes(clientes, numClientes);
 
-      // Ordenar os clientes
+      // Ordenar os clientes.
       shellSort(clientes, numClientes);
 
-      // Imprimir clientes depois da ordenação
+      // Imprimir clientes depois da ordenação.
       printf("\nClientes ordenados:\n");
       imprimirClientes(clientes, numClientes);
       printf("\nDigite algo para continuar...\n");
@@ -51,7 +51,6 @@ int main() {
       return 0;
     default:
       printf("Opção inválida!\n");
-      continua = 1;
     }
   }
 
