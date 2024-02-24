@@ -67,17 +67,42 @@ void Menu(Cliente *clientes, int *opc) {
   scanf("%d", opc);
 }
 
-void Dados_Clientes(Cliente *clientes, int numClientes){
-  printf("Insira seu nome: ");
-  scanf(" %[^\n]", clientes[numClientes].nome);
+int verificarDados(const char *str) {
+  while (*str) {
+      if (!((*str >= 'a' && *str <= 'z') || (*str >= 'A' && *str <= 'Z') || *str == ' ')) {
+        return 1; // Retorna 1 se o dado recebido não for uma letra.
+      }
+        str++;
+    }
+    return 0; // Retorna 0 se todos os dados recebidos forem letras.
+}
+
+void Dados_Clientes(Cliente *clientes, int numClientes) {
+  int nomeValido; // Variável para verificar se o nome é válido.
+
+  do {
+      nomeValido = 1;
+
+      printf("Insira seu nome: ");
+      scanf(" %[^\n]", clientes[numClientes].nome);
+        
+    // Verifica se o nome tem apenas letras.
+      if (verificarDados(clientes[numClientes].nome)) {
+        printf("Digite apenas letras. ");
+        nomeValido = 0;
+      }
+
+    } while (!nomeValido);
+
   printf("Informe seu endereço: ");
   scanf(" %[^\n]", clientes[numClientes].endereco);
 
-    // Verificar se o há outro ID igual.
+   
     int novoID;
     printf("Informe o seu ID: ");
     scanf("%d", &novoID);
 
+  // Verificar se há outro ID igual.
     for (int i = 0; i < numClientes; i++) {
       if (clientes[i].ID == novoID) {
         printf("ID já existe. Por favor, insira um novo ID: ");

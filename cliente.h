@@ -23,3 +23,5 @@ void imprimirClientes(Cliente *clientes, int numClientes);
 // Função para receber os dados de um novo cliente e armazená-los na estrutura Cliente.
 void Dados_Clientes(Cliente *clientes, int numClientes);
 
+// Função para verificar se o nome tem apenas letras.
+int verificarDados(const char *str);
