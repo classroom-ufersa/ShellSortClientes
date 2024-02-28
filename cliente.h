@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct clientes {
     char nome[50];
@@ -25,3 +25,6 @@ void Dados_Clientes(Cliente *clientes, int numClientes);
 
 // Função para verificar se o nome tem apenas letras.
 int verificarDados(const char *str);
+
+// Função para escrever os dados dos clientes em um arquivo de texto.
+void escreverClientes(Cliente *clientes, int numClientes);
