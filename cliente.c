@@ -3,6 +3,14 @@
 
 typedef struct clientes Cliente;
 
+void Menu(Cliente *clientes, int *opc) {
+  system("clear");
+  printf("-------- SISTEMA SHELL SORT --------\n");
+  printf("O que deseja fazer:\n");
+  printf("(1) - Cadastrar Clientes \n(2) - Mostrar Ordenação\n(3) - Sair\n");
+  scanf("%d", opc);
+}
+
 Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   FILE *arquivo = fopen(nomeArquivo, "r");
   if (arquivo == NULL) {
@@ -10,7 +18,6 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
     exit(1);
   }
 
-  // Contar o número de clientes no arquivo.
   int contador = 0;
   char linha[150];
   while (fgets(linha, sizeof(linha), arquivo) != NULL) {
@@ -19,14 +26,12 @@ Cliente *lerClientes(char *nomeArquivo, int *numClientes) {
   rewind(arquivo);
   contador /= 2;
 
-  // Aloca memória para o array de clientes.
-  Cliente *clientes = (Cliente *)calloc(contador,sizeof(Cliente));
+  Cliente *clientes = (Cliente *)calloc(contador, sizeof(Cliente));
   if (clientes == NULL) {
     printf("Erro ao alocar memória\n");
     exit(1);
   }
 
-  // Ler os clientes do arquivo e armazenar no array.
   for (int i = 0; i < contador; i++) {
     if (fscanf(arquivo, "%d %49[^\n] %99[^\n]", &clientes[i].ID,
                clientes[i].nome, clientes[i].endereco) != 3) {
@@ -59,56 +64,59 @@ void imprimirClientes(Cliente *clientes, int numClientes) {
   }
 }
 
-void Menu(Cliente *clientes, int *opc) {
-  system("clear");
-  printf("-------- SISTEMA SHELL SORT --------\n");
-  printf("O que deseja fazer:\n");
-  printf("(1) - Cadastrar Clientes \n(2) - Mostrar Ordenação\n(3) - Sair\n");
-  scanf("%d", opc);
+void escreverClientes(Cliente *clientes, int numClientes) {
+  FILE *arquivo = fopen("clientes.txt", "w+");
+  if (arquivo == NULL) {
+    printf("Erro ao abrir o arquivo");
+  }
+
+  for (int i = 0; i < numClientes; i++) {
+    fprintf(arquivo, "%d %s %s\n", clientes[i].ID, clientes[i].nome,
+            clientes[i].endereco);
+  }
+  fclose(arquivo);
 }
 
 int verificarDados(const char *str) {
   while (*str) {
-      if (!((*str >= 'a' && *str <= 'z') || (*str >= 'A' && *str <= 'Z') || *str == ' ')) {
-        return 1; // Retorna 1 se o dado recebido não for uma letra.
-      }
-        str++;
+    if (!((*str >= 'a' && *str <= 'z') || (*str >= 'A' && *str <= 'Z') ||
+          *str == ' ')) {
+      return 1;
     }
-    return 0; // Retorna 0 se todos os dados recebidos forem letras.
+    str++;
+  }
+  return 0;
 }
 
 void Dados_Clientes(Cliente *clientes, int numClientes) {
-  int nomeValido; // Variável para verificar se o nome é válido.
+  int nomeValido;
 
   do {
-      nomeValido = 1;
+    nomeValido = 1;
 
-      printf("Insira seu nome: ");
-      scanf(" %[^\n]", clientes[numClientes].nome);
-        
-    // Verifica se o nome tem apenas letras.
-      if (verificarDados(clientes[numClientes].nome)) {
-        printf("Digite apenas letras. ");
-        nomeValido = 0;
-      }
+    printf("Insira seu nome: ");
+    scanf(" %[^\n]", clientes[numClientes].nome);
 
-    } while (!nomeValido);
+    if (verificarDados(clientes[numClientes].nome)) {
+      printf("Digite apenas letras. ");
+      nomeValido = 0;
+    }
+
+  } while (!nomeValido);
 
   printf("Informe seu endereço: ");
   scanf(" %[^\n]", clientes[numClientes].endereco);
 
-   
-    int novoID;
-    printf("Informe o seu ID: ");
-    scanf("%d", &novoID);
+  int novoID;
+  printf("Informe o seu ID: ");
+  scanf("%d", &novoID);
 
-  // Verificar se há outro ID igual.
-    for (int i = 0; i < numClientes; i++) {
-      if (clientes[i].ID == novoID) {
-        printf("ID já existe. Por favor, insira um novo ID: ");
-        scanf("%d", &novoID);
-        i = -1;
-      }
+  for (int i = 0; i < numClientes; i++) {
+    if (clientes[i].ID == novoID) {
+      printf("ID já existe. Por favor, insira um novo ID: ");
+      scanf("%d", &novoID);
+      i = -1;
     }
-    clientes[numClientes].ID = novoID;
+  }
+  clientes[numClientes].ID = novoID;
 }
